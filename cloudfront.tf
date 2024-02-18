@@ -27,6 +27,7 @@ resource "aws_cloudfront_distribution" "site" {
   http_version        = var.cloudfront_http_version
   is_ipv6_enabled     = var.cloudfront_ipv6
   price_class         = var.cloudfront_price_class
+  depends_on          = aws_acm_certificate.site
 
   dynamic "custom_error_response" {
     for_each = var.cloudfront_custom_error_responses
